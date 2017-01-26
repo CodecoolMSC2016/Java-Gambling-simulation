@@ -1,8 +1,12 @@
 import java.util.*;
+import java.text.*;
+
 public class Logger {
 
 	public void log(String type, String message) {
-		Date exactTime = Calendar.getInstance().getTime();
-		System.out.println(exactTime + type + message);
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date today = Calendar.getInstance().getTime();
+		String reportDate = df.format(today);
+		System.out.println(reportDate);
 	}
 }
