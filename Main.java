@@ -3,16 +3,19 @@
 public class Main{
 	
 	public static void main(String[] args){
+		Simulation roulette;
 		if(args.length != 0){
 		int round = Integer.parseInt(args[0]);
-		generateSimulation(round);
+		roulette = generateSimulation(round);
+		
 		}
 		else {
-			Simulation roulette = new Simulation();
+			roulette = new Simulation();
 			roulette.load();
-			System.out.println(roulette.winnerNumbers.length);
 		}
 		
+		Simulator result = new Simulator(roulette);
+		result.run();
 	}
 	
 	public static Simulation generateSimulation(int round){
