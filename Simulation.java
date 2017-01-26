@@ -5,18 +5,10 @@ import java.io.*;
 
 public class Simulation{
 	
-	FileWriter fileWriter;
 	int[] black;
 	RouletteNumber[] winnerNumbers;
 	
 	public Simulation(){
-		
-		try{
-		this.fileWriter = new FileWriter("asd.csv");
-		}
-		catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
 		
 		this.black = new int[]{2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35 };
 		this.winnerNumbers = new RouletteNumber[0];
@@ -25,6 +17,8 @@ public class Simulation{
 	
 	
 	public void generateData(){
+		
+		
 		
 		Random randomNumber = new Random();
 		int randNum = randomNumber.nextInt(37);
@@ -47,23 +41,26 @@ public class Simulation{
 		for (int i = 0 ; i < black.length; i++){
 				if (randNum == black[i]){
 					winnerNumber.setColor("black");
+				}else if (randNum == 0) {
+					
+					winnerNumber.setColor("green");
 				}
 			}
 
-		if (winnerNumber.getColor() != "black"){
+		if (winnerNumber.getColor() != "black" && winnerNumber.getColor() != "green"){
 		
 			winnerNumber.setColor("red");
 		}
 			
-
-		//fileWriter.append("value,color,numberPropertie");
 		try{
+			FileWriter fileWriter = new FileWriter("Simulation.csv",true);
 			fileWriter.append("\n");
 			fileWriter.append(Integer.toString(winnerNumber.getValue()));
 			fileWriter.append(",");
 			fileWriter.append(winnerNumber.getColor());
 			fileWriter.append(",");
 			fileWriter.append(winnerNumber.getNumberType());
+			fileWriter.close();
 			
 		
 		}
@@ -76,5 +73,34 @@ public class Simulation{
 		
 		
 	}
+	
+	public void load(){
+		String csvFile = "Simulation.csv";
+		this.winnerNumbers = new RouletteNumber[0];
+		BufferedReader fileReader = null;
+		
+		try {
+			String line = "";
+			fileReader = new BufferedReader(new FileReader(csvFile));
+			fileReader.readLine();
+			while((line = fileReader.readLine()) != null){
+				String[] tokens = line.split(",");
+				RouletteNumber winnerNumber = new RouletteNumber();
+				winnerNumber.setValue(Integer.parseInt(tokens[0]));
+				winnerNumber.setColor(tokens[1]);
+				winnerNumber.setNumberType(tokens[2]);
+				
+				this.winnerNumbers = Arrays.copyOf(this.winnerNumbers, this.winnerNumbers.length + 1);
+				this.winnerNumbers[this.winnerNumbers.length-1] = winnerNumber;
+				
+				
+			}
+		}
+			catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+			
+		
 
+	}
 }
