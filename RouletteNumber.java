@@ -25,7 +25,7 @@ public class RouletteNumber{
 		return value;
 	}
 	
-	public void setGetColor(String color){
+	public void setColor(String color){
 		
 		this.color = color;
 	}
