@@ -1,5 +1,5 @@
 import java.util.*;
-
+//toDO: kell a run methodba egy Result példányositás és az lesz a return után pl Result pelda = new Result() , majd settereknek átaddod az eredményeket *percent,return pelda
 public class Simulator{
 	
 	Simulation roulette;
