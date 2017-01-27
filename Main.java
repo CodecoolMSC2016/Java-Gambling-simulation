@@ -15,7 +15,9 @@ public class Main{
 		}
 		
 		Simulator result = new Simulator(roulette);
-		result.run();
+		Result details = result.run();
+		Logger logger = new Logger();
+		logger.log("Results of the simulation", details);
 	}
 	
 	public static Simulation generateSimulation(int round){

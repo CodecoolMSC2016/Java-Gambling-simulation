@@ -59,7 +59,7 @@ public class Simulator{
 		double zeroPercent = ((double)zeroCounter/roulette.winnerNumbers.length)*100;
 		double blackPercent = ((double)blackCounter/roulette.winnerNumbers.length)*100;
 		double redPercent = ((double)redCounter/roulette.winnerNumbers.length)*100;
-		double greenPercent = zeroPercent;
-		return null;
+		Result result = new Result(oddPercent, evenPercent, zeroPercent, blackPercent, redPercent, valOcc);
+		return result;
 	}
 }
