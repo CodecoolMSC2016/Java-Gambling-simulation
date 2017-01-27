@@ -5,13 +5,13 @@ public class Result {
 	
 	public Result(){
 		
-		this.oddPercent = null;
-		this.evenPercent = null;
-		this.zeroPercent = null;
-		this.blackPercent = null;
-		this.redPercent = null;
-		this.valOcc = null;
-		this.numberPercent = null;
+		this.oddPercent = oddPercent;
+		this.evenPercent = evenPercent;
+		this.zeroPercent = zeroPercent;
+		this.blackPercent = blackPercent;
+		this.redPercent = redPercent;
+		this.valOcc = Collections.<Integer, Integer>emptyMap();
+		this.numberPercent = numberPercent;
 	
 	}
 	
@@ -44,5 +44,41 @@ public class Result {
 	
 		return numberPercent;
 	}
-	
+
+	public void setOddPercent(Double value){
+
+		this.oddPercent = value;
+	}
+
+	public  void setEvenPercent(Double value){
+
+		this.evenPercent = value;
+	}
+
+	public  void setZeroPercent(Double value){
+
+		this.zeroPercent = value;
+	}
+
+	public  void setBlackPercent(Double value){
+
+		this.blackPercent = value;
+	}
+
+	public  void setRedPercent(Double value){
+
+		this.redPercent = value;
+	}
+
+	public  void setValOcc(Map<Integer, Integer> value){
+
+		this.valOcc = value;
+	}
+
+	public  void setNumberPercent(Double value){
+
+		this.numberPercent = value;
+	}
 }
+
+
